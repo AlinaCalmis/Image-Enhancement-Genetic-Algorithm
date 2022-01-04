@@ -46,6 +46,7 @@ def compute_sobel_edge(gray):
     sobel_x = cv2.Sobel(img, cv2.CV_64F, 1, 0, ksize=5)
     return sobel_x
 
+
 # calculeza fitness-ul fiecarui cromozom
 def fitness(img):
     rows = img.shape[0]
@@ -154,76 +155,3 @@ def show_image(image,rows, cols):
     cv2.imshow("final", new_img)
     cv2.waitKey(0)
     cv2.imwrite("Final_img.jpg", new_img)
-# ps = 50
-# # crossover rate
-# pc = 0.2
-# num_crossovers = 8
-#
-# # citeste imaginea
-# img = cv2.imread('img.png', cv2.IMREAD_GRAYSCALE).astype('uint8')
-# rows = img.shape[0]
-# cols = img.shape[1]
-#
-# # dimensiunea cromozomului
-# chromo_size = (img.shape[0] * img.shape[1])
-#
-# # dimensiunea populatiei initiale
-# pop_size = ps
-#
-# # cate niveluri de gri sunt in imagine
-# gray_levels = max(np.unique(img))
-#
-# # valori unice in imagine
-# unique_values = np.unique(img)
-#
-# # genereaza pop initiala
-# pop = initial_population(pop_size, len(unique_values), gray_levels)
-#
-# fitness_values = []
-# enhanced_arr = []
-#
-# # transforma imaginea intr-un cromozom
-# img_chromo = img_to_chromosome(img, rows, cols)
-#
-#
-# for id, i in enumerate(pop):
-#
-#     #se face o copie a imaginii initiale si se lucreaza cu aceasta copie
-#     img_chromo1 = img_chromo.copy()
-#
-#     print("enumerate pop  ", id)
-#     # se face schimbul de date dintre cromozomul initial(imaginea initiala) si individul generat random
-#     for idx, unique in enumerate(unique_values):
-#         for j in range(chromo_size):
-#
-#             if img_chromo1[j] == unique:
-#                 img_chromo1[j] = i[idx]
-#
-#     enhanced_img = chromosome_to_img(img_chromo1, rows, cols)
-#
-#     # se salveaza in forma de cromozom
-#     enhanced_arr.append(img_chromo1)
-#
-#     # calculeaza fitness-ul
-#     fit = fitness(enhanced_img)
-#     fitness_values.append(fit)
-#
-#
-# prev_greatest_fit = 0
-# while True:
-#
-#     new_generation = perform_crossover(enhanced_arr,fitness_values, rows, cols, num_crossovers, ps, pc)
-#     print("Len new gen: ", len(new_generation))
-#
-#     enhanced_arr.extend(new_generation)
-#     greatest_fit = max(fitness_values)
-#     idx = fitness_values.index(greatest_fit)
-#     ps = ps - len(new_generation)
-#
-#     eps = 0.02 * greatest_fit
-#
-#     if greatest_fit - prev_greatest_fit < eps or ps == 1:
-#         show_image(enhanced_arr[idx])
-#         break
-#
-#     prev_greatest_fit = greatest_fit
