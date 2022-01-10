@@ -33,11 +33,8 @@ def generate():
     # transforma imaginea intr-un cromozom
     img_chromo = img_to_chromosome(img, rows, cols)
 
-    # imbunatatirea contrastului
-
     for id, i in enumerate(pop):
 
-        print("enumerate pop  ", id)
         # imbunatatirea contrastului
         enhanced = enhance(unique_values, chromo_size, img_chromo, i)
         enhanced_img = chromosome_to_img(enhanced, rows, cols)
@@ -54,7 +51,6 @@ def generate():
 
         # creeaza noua generatie
         new_generation = perform_crossover(enhanced_arr, fitness_values, rows, cols, num_crossovers, ps, pc)
-        print("Len new gen: ", len(new_generation))
 
         # extinde vectorul de imagini imbunatite
         enhanced_arr.extend(new_generation)
@@ -75,7 +71,6 @@ def generate():
             break
 
         prev_greatest_fit = greatest_fit
-
 
 
 if __name__ == '__main__':

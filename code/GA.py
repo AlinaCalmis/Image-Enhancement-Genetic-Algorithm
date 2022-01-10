@@ -1,18 +1,6 @@
 import numpy as np
 from cv2 import cv2
 import math
-import sys
-
-# np.set_printoptions(threshold=sys.maxsize)
-
-#
-# def write(msg):
-#     with open('output.txt', 'w') as f:
-#         sys.stdout = f
-#         print(msg)
-#         sys.stdout = sys.stdout
-#         f.close()
-
 
 def read_image(image_name):
     img = cv2.imread(image_name, cv2.IMREAD_GRAYSCALE).astype('uint8')
